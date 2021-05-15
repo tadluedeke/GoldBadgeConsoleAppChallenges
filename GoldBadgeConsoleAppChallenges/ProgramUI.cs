@@ -37,10 +37,10 @@ namespace GoldBadgeConsoleAppChallenges
                         CreateNewMeal();
                         break;
                     case "2":
-                        //ViewAllMeals
+                        ViewAllMeals();
                         break;
                     case "3":
-                        //ViewMealByNumber
+                        ViewMealByNumber();
                         break;
                     case "4":
                         //UpdateExistingMeal
@@ -69,7 +69,56 @@ namespace GoldBadgeConsoleAppChallenges
             newMeal.MealNumber = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("What would you like this meal to be named?");
+            newMeal.MealName = Console.ReadLine();
 
+            Console.WriteLine("Enter a description for this meal");
+            newMeal.MealDescription = Console.ReadLine();
+
+            Console.WriteLine("List this meal's ingredients");
+            newMeal.MealIngredients = Console.ReadLine();
+
+            Console.WriteLine("Enter the price of this meal?");
+            newMeal.MealPrice = Convert.ToDecimal(Console.ReadLine());
+
+            bool wasAddedToMenu = _repo.AddItemToMenu(newMeal);
+            if (wasAddedToMenu)
+            {
+                Console.WriteLine("The new menu item was successfully added");
+            }
+            else
+            {
+                Console.WriteLine("The new menu item was not added.");
+            }
+        }
+        private void ViewAllMeals()
+        {
+            Console.Clear();
+            List<MenuItem> allMenuItems = _repo.GetMenu();
+            foreach (MenuItem meal in allMenuItems)
+            {
+                Console.WriteLine($"Meal Number: {meal.MealNumber}\n" +
+                    $"Meal Name: {meal.MealName}\n" +
+                    $"Price: {meal.MealPrice}");
+            }
+        }
+        private void ViewMealByNumber()
+        {
+            Console.Clear();
+            ViewAllMeals();
+            Console.WriteLine("Enter the Meal Number for details on that meal");
+            MenuItem meal = _repo.GetMenuItemByNumber(Convert.ToInt32(Console.ReadLine()));
+            if(meal != null)
+            {
+                Console.WriteLine($"Meal Number: {meal.MealNumber}\n" +
+                    $"Meal Name: {meal.MealName}\n" +
+                    $"Meal Description: {meal.MealDescription}\n" +
+                    $"Meal Ingredients: {meal.MealIngredients}\n" +
+                    $"Meal Price: {meal.MealPrice}");
+            }
+            else
+            {
+                Console.WriteLine("There is no meal by that number");
+            }
         }
     }
 }
