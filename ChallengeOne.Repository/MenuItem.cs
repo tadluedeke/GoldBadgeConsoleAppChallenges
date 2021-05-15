@@ -13,5 +13,14 @@ namespace ChallengeOne.Repository
         public string MealDescription { get; set; }
         public string MealIngredients { get; set; }
         public decimal MealPrice { get; set; }
+    public MenuItem() { }
+        public MenuItem(int mealNumber, string mealName, string mealDescription, string mealIngredients, decimal mealPrice)
+        {
+            MealNumber = mealNumber;
+            MealName = mealName;
+            MealDescription = mealDescription;
+            MealIngredients = mealIngredients;
+            MealPrice = mealPrice;
+        }
     }
 }
