@@ -56,5 +56,20 @@ namespace ChallengeOne.Repository
                 return false;
             }
         }
+
+        //Delete
+        public bool DeleteMenuItem(int numberToDelete)
+        {
+            MenuItem itemToDelete = GetMenuItemByNumber(numberToDelete);
+            if(itemToDelete == null)
+            {
+                return false;
+            }
+            else
+            {
+                _menuDirectory.Remove(itemToDelete);
+                return true;
+            }
+        }
     }
 }
