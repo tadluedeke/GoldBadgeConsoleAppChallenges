@@ -43,10 +43,10 @@ namespace GoldBadgeConsoleAppChallenges
                         ViewMealByNumber();
                         break;
                     case "4":
-                        //UpdateExistingMeal
+                        UpdateExistingMeal();
                         break;
                     case "5":
-                        //DeleteMeal
+                        //DeleteMeal();
                         break;
                     case "6":
                         keepRunning = false;
@@ -118,6 +118,38 @@ namespace GoldBadgeConsoleAppChallenges
             else
             {
                 Console.WriteLine("There is no meal by that number");
+            }
+        }
+        private void UpdateExistingMeal()
+        {
+            Console.Clear();
+            ViewAllMeals();
+            Console.WriteLine("Enter the number of the meal you would like to update");
+            int oldMealNumber = Convert.ToInt32(Console.ReadLine());
+            MenuItem newMeal = new MenuItem();
+            Console.WriteLine("Please assign this meal an unused meal number.");
+            newMeal.MealNumber = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("What would you like this meal to be named?");
+            newMeal.MealName = Console.ReadLine();
+
+            Console.WriteLine("Enter a description for this meal");
+            newMeal.MealDescription = Console.ReadLine();
+
+            Console.WriteLine("List this meal's ingredients");
+            newMeal.MealIngredients = Console.ReadLine();
+
+            Console.WriteLine("Enter the price of this meal?");
+            newMeal.MealPrice = Convert.ToDecimal(Console.ReadLine());
+
+            bool wasUpdated = _repo.UpdateMenuItem(oldMealNumber, newMeal);
+            if (wasUpdated)
+            {
+                Console.WriteLine("The meal was successfully updated");
+            }
+            else
+            {
+                Console.WriteLine("No meal by that number exists.");
             }
         }
     }
