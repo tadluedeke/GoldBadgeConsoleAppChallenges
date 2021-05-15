@@ -46,7 +46,7 @@ namespace GoldBadgeConsoleAppChallenges
                         UpdateExistingMeal();
                         break;
                     case "5":
-                        //DeleteMeal();
+                        DeleteMeal();
                         break;
                     case "6":
                         keepRunning = false;
@@ -150,6 +150,21 @@ namespace GoldBadgeConsoleAppChallenges
             else
             {
                 Console.WriteLine("No meal by that number exists.");
+            }
+        }
+        private void DeleteMeal()
+        {
+            Console.Clear();
+            ViewAllMeals();
+            Console.WriteLine("Enter the meal number for the meal you would like to delete");
+            bool wasDeleted = _repo.DeleteMenuItem(Convert.ToInt32(Console.ReadLine()));
+            if (wasDeleted)
+            {
+                Console.WriteLine("The meal was successfully deleted.");
+            }
+            else
+            {
+                Console.WriteLine("The meal was not deleted.");
             }
         }
     }
