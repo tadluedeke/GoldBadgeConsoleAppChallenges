@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChallengeTwo.Repository
+namespace ChallengeTwo_Repository
 {
     public class ClaimRepository
     {
@@ -21,6 +21,16 @@ namespace ChallengeTwo.Repository
         public Queue<Claim> SeeAllClaims()
         {
             return _claimQueue;
+        }
+
+        public Claim SeeNextClaim()
+        {
+            return _claimQueue.Peek();
+        }
+
+        public Claim ProcessClaim()
+        {
+            return _claimQueue.Dequeue();
         }
     }
 }
