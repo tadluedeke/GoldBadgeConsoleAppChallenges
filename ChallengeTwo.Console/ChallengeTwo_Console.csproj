@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChallengeTwo.Repository\ChallengeTwo_Repository.csproj">
-      <Project>{9328B9D5-B06F-4556-B3F7-197F43FA7973}</Project>
+      <Project>{9328b9d5-b06f-4556-b3f7-197f43fa7973}</Project>
       <Name>ChallengeTwo_Repository</Name>
     </ProjectReference>
   </ItemGroup>

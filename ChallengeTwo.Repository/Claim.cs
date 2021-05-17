@@ -19,9 +19,11 @@ namespace ChallengeTwo_Repository
         {
             get
             {
-                DateTime dateOfIncident = new DateTime();
-                DateTime dateOfClaim = new DateTime();
-                if (Convert.ToInt32((dateOfClaim - dateOfIncident)) > 30)
+                DateTime dateOfIncident = DateOfIncident;
+                DateTime dateOfClaim = DateOfClaim;
+                double claimDifference = (dateOfClaim - dateOfIncident).TotalDays;
+
+                if ( claimDifference > 30)
                 {
                     return false;
                 }
