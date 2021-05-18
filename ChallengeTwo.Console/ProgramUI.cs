@@ -10,6 +10,7 @@ namespace ChallengeTwo_Console
     class ProgramUI
     {
         private ClaimRepository _repo = new ClaimRepository();
+        public bool _keepRunning = true;
         public void Run()
         {
             SeedContentList();
@@ -18,8 +19,7 @@ namespace ChallengeTwo_Console
 
         private void Menu()
         {
-            bool keepRunning = true;
-            while (keepRunning)
+            while (_keepRunning)
             {
                 Console.WriteLine("Select a menu option: \n" +
                     "1. See All Claims\n" +
@@ -43,8 +43,7 @@ namespace ChallengeTwo_Console
                         EnterNewClaim();
                         break;
                     case "4":
-                    case "exit":
-                        keepRunning = false;
+                        ExitProgram();
                         break;
                     default:
                         Console.WriteLine("Please choose a valid menu option");
@@ -110,7 +109,7 @@ namespace ChallengeTwo_Console
                     $"Claim Amount: {claim.ClaimAmount}\n" +
                     $"Date of Incident: {claim.DateOfIncident}\n" +
                     $"Date of Claim: {claim.DateOfClaim}\n" +
-                    $"Is Claim Valid: {claim.IsValid}");
+                    $"Is Claim Valid: {claim.IsValid}\n");
             }
         }
 
@@ -134,6 +133,7 @@ namespace ChallengeTwo_Console
                     _repo.ProcessClaim();
                     break;
                 case "n":
+                    Console.Clear();
                     Menu();
                     break;
                 default:
@@ -141,12 +141,17 @@ namespace ChallengeTwo_Console
                     break;
             }
         }
+
+        private void ExitProgram()
+        {
+            _keepRunning = false;
+        }
         
         private void SeedContentList()
         {
             Claim burstPipe = new Claim(1, ClaimType.Home, "A pipe burst in the kitchen, flooding the kitchen and finished basement.", 15000m, new DateTime(2012,02,08),new DateTime(2012,03,02));
-            Claim carCrash = new Claim(1, ClaimType.Car, "One car ran into another during a funeral procession.", 1200m, new DateTime(2016, 04, 22), new DateTime(2016, 07, 05));
-            Claim jewelHeist = new Claim(1, ClaimType.Theft, "Jewel thieves broke in, attacked Jared, and stole all of his jewels.", 200000m, new DateTime(2021,07,04), new DateTime(2021,07,06));
+            Claim carCrash = new Claim(2, ClaimType.Car, "One car ran into another during a funeral procession.", 1200m, new DateTime(2016, 04, 22), new DateTime(2016, 07, 05));
+            Claim jewelHeist = new Claim(3, ClaimType.Theft, "Jewel thieves broke in, attacked Jared, and stole all of his jewels.", 200000m, new DateTime(2021,07,04), new DateTime(2021,07,06));
             _repo.AddClaimToQueue(burstPipe);
             _repo.AddClaimToQueue(carCrash);
             _repo.AddClaimToQueue(jewelHeist);
