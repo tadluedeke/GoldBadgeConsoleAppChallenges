@@ -13,16 +13,18 @@ namespace ChallengeTwo_Console
         public bool _keepRunning = true;
         public void Run()
         {
+            SeedContentList();
             Menu();
         }
 
         private void Menu()
         {
+            Console.Clear();
             while (_keepRunning)
             {
                 Console.WriteLine("Select a menu option:\n" +
                     "1. View All Claims\n" +
-                    "2. Update Claim" +
+                    "2. Update Claim\n" +
                     "3. Exit");
 
                 string input = Console.ReadLine();
@@ -106,6 +108,16 @@ namespace ChallengeTwo_Console
         private void ExitProgram()
         {
             _keepRunning = false;
+        }
+
+        private void SeedContentList()
+        {
+            Claim burstPipe = new Claim(1, ClaimType.Home, "A pipe burst in the kitchen, flooding the kitchen and finished basement.", 15000m, new DateTime(2012, 02, 08), new DateTime(2012, 03, 02));
+            Claim carCrash = new Claim(2, ClaimType.Car, "One car ran into another during a funeral procession.", 1200m, new DateTime(2016, 04, 22), new DateTime(2016, 07, 05));
+            Claim jewelHeist = new Claim(3, ClaimType.Theft, "Jewel thieves broke in, attacked Jared, and stole all of his jewels.", 200000m, new DateTime(2021, 07, 04), new DateTime(2021, 07, 06));
+            _repo.AddClaimToList(burstPipe);
+            _repo.AddClaimToList(carCrash);
+            _repo.AddClaimToList(jewelHeist);
         }
     }
 }

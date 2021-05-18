@@ -19,6 +19,7 @@ namespace ChallengeTwo_Console
 
         private void Menu()
         {
+            Console.Clear();
             while (_keepRunning)
             {
                 Console.WriteLine("Select a menu option: \n" +
