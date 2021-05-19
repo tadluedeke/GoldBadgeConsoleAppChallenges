@@ -8,6 +8,14 @@ namespace ChallengeThree_Repository
 {
     public class BadgeRepository
     {
-        Dictionary<int, List<DoorID>> listOfBadges = new Dictionary<int, List<DoorID>>();
+        Dictionary<int, List<DoorID>> _listOfBadges = new Dictionary<int, List<DoorID>>();
+        //    public bool CreateNewBadge(Badge newBadge)
+        //    {
+        //        int startingCount = _listOfBadges.Count;
+
+        //        _listOfBadges.Add(Badge);
+        //    }
+
     }
+
 }
