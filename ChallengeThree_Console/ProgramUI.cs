@@ -36,7 +36,7 @@ namespace ChallengeThree_Console
                         //EditBadge();
                         break;
                     case "3":
-                        //ViewAllBadges();
+                        ViewAllBadges();
                         break;
                     case "4":
                         keepRunning = false;
@@ -126,6 +126,21 @@ namespace ChallengeThree_Console
             }
             Console.Clear();
             Menu();
+        }
+
+        public void ViewAllBadges()
+        {
+            Console.Clear();
+            Dictionary<int, List<DoorID>> allBadges = _repo.SeeAllBadges();
+            foreach (KeyValuePair<int, List<DoorID>> badge in allBadges)
+            {
+                Console.WriteLine($"Badge Number: {badge.Key}\n" +
+                    $"Door Access: ");
+                    foreach (DoorID doorID in badge.Value)
+                {
+                    Console.WriteLine(doorID);
+                }
+            }
         }
     }
 }

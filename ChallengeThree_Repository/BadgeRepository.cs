@@ -23,6 +23,22 @@ namespace ChallengeThree_Repository
         {
             return _listOfBadges;
         }
-    }
 
+        public Badge SeeBadgeByID(int badgeID)
+        {
+            Badge badge = new Badge(badgeID, _listOfBadges[badgeID]);
+
+            if (_listOfBadges.ContainsKey(badgeID))
+            {
+                return badge;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+    }
 }
+
