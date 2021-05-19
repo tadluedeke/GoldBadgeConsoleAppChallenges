@@ -10,6 +10,7 @@ namespace ChallengeThree_Console
     public class ProgramUI
     {
         private BadgeRepository _repo = new BadgeRepository();
+
         public void Run()
         {
             Menu();
@@ -54,21 +55,77 @@ namespace ChallengeThree_Console
         {
             Console.Clear();
             Badge newBadge = new Badge();
-
+            newBadge.Doors = new List<DoorID>();
             Console.WriteLine("What is the badge number on the badge?");
             int newBadgeID = Convert.ToInt32(Console.ReadLine());
             newBadge.BadgeID = newBadgeID;
 
-            Console.WriteLine("List a door that it needs access to");
-            string newDoor = Console.ReadLine();
-            if (newDoor == "A1")
+            Console.WriteLine("Would you like to assign door access to this badge (y/n)?");
+            string input = Console.ReadLine();
+
+            while (input == "y")
             {
-                DoorID newDoorID = DoorID.A1;
+                Console.WriteLine("List a door that it needs access to");
+                string newDoor = Console.ReadLine();
+                if (newDoor == "A1")
+                {
+                    DoorID newDoorID = DoorID.A1;
+                    newBadge.Doors.Add(newDoorID);
+                    
+                }
+                else if (newDoor == "A2")
+                {
+                    DoorID newDoorID = DoorID.A2;
+                    newBadge.Doors.Add(newDoorID);
+                }
+                else if (newDoor == "A3")
+                {
+                    DoorID newDoorID = DoorID.A3;
+                    newBadge.Doors.Add(newDoorID);
+                }
+                else if (newDoor == "A4")
+                {
+                    DoorID newDoorID = DoorID.A4;
+                    newBadge.Doors.Add(newDoorID);
+                }
+                else if (newDoor == "A5")
+                {
+                    DoorID newDoorID = DoorID.A5;
+                    newBadge.Doors.Add(newDoorID);
+                }
+                else if (newDoor == "B1")
+                {
+                    DoorID newDoorID = DoorID.B1;
+                    newBadge.Doors.Add(newDoorID);
+                }
+                else if (newDoor == "B2")
+                {
+                    DoorID newDoorID = DoorID.B2;
+                    newBadge.Doors.Add(newDoorID);
+                }
+                else if (newDoor == "B3")
+                {
+                    DoorID newDoorID = DoorID.B3;
+                    newBadge.Doors.Add(newDoorID);
+                }
+                else if (newDoor == "B4")
+                {
+                    DoorID newDoorID = DoorID.B4;
+                    newBadge.Doors.Add(newDoorID);
+                }
+                Console.WriteLine("Any other doors(y/n)?");
+                input = Console.ReadLine();
             }
-            else if (newDoor == "A2")
+            if (_repo.CreateNewBadge(newBadge))
             {
-                DoorID newDoorID = DoorID.A2;
+                Console.WriteLine("New badge successfully created");
             }
+            else
+            {
+                Console.WriteLine("Could not create new badge.");
+            }
+            Console.Clear();
+            Menu();
         }
     }
 }
