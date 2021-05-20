@@ -54,9 +54,20 @@ namespace ChallengeThree_Repository
             }
         }
 
-        public bool RemoveDoorFromBadge()
+        public bool RemoveDoorFromBadge(int badgeID, DoorID doorID)
         {
-            return true;
+            int countBefore = _listOfBadges[badgeID].Count;
+            _listOfBadges[badgeID].Remove(doorID);
+            int countAfter = _listOfBadges[badgeID].Count;
+            
+            if (countAfter < countBefore)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

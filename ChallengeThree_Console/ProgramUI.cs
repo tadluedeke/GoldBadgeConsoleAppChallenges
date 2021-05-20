@@ -164,7 +164,7 @@ namespace ChallengeThree_Console
             {
                 case "1":
                 case "remove":
-                    //RemoveDoorFromBadge();
+                    RemoveDoorFromBadge(badgeToEdit);
                     break;
                 case "2":
                 case "add":
@@ -240,12 +240,81 @@ namespace ChallengeThree_Console
             bool wasAdded = _repo.AddDoorToBadge(newBadgeID, newDoorID);
             if (wasAdded)
             {
-                _repo.SeeBadgeByID(newBadgeID);
                 Console.WriteLine("Door was added to badge");
             }
             else
             {
                 Console.WriteLine("No badge corresponds with the provided badge number.");
+            }
+        }
+
+        public void RemoveDoorFromBadge(int badge)
+        {
+            Badge newBadge = new Badge();
+            newBadge.Doors = new List<DoorID>();
+            int newBadgeID = badge;
+            newBadge.BadgeID = newBadgeID;
+            DoorID newDoorID = new DoorID();
+
+            Console.WriteLine("What door would you like to Remove from this badge?");
+
+            string newDoor = Console.ReadLine();
+
+            Console.WriteLine(newDoor);
+            if (newDoor == "A1")
+            {
+                newDoorID = DoorID.A1;
+                newBadge.Doors.Remove(newDoorID);
+            }
+            else if (newDoor == "A2")
+            {
+                newDoorID = DoorID.A2;
+                newBadge.Doors.Remove(newDoorID);
+            }
+            else if (newDoor == "A3")
+            {
+                newDoorID = DoorID.A3;
+                newBadge.Doors.Remove(newDoorID);
+            }
+            else if (newDoor == "A4")
+            {
+                newDoorID = DoorID.A4;
+                newBadge.Doors.Remove(newDoorID);
+            }
+            else if (newDoor == "A5")
+            {
+                newDoorID = DoorID.A5;
+                newBadge.Doors.Remove(newDoorID);
+            }
+            else if (newDoor == "B1")
+            {
+                newDoorID = DoorID.B1;
+                newBadge.Doors.Remove(newDoorID);
+            }
+            else if (newDoor == "B2")
+            {
+                newDoorID = DoorID.B2;
+                newBadge.Doors.Remove(newDoorID);
+            }
+            else if (newDoor == "B3")
+            {
+                newDoorID = DoorID.B3;
+                newBadge.Doors.Remove(newDoorID);
+            }
+            else if (newDoor == "B4")
+            {
+                newDoorID = DoorID.B4;
+                newBadge.Doors.Remove(newDoorID);
+            }
+
+            bool wasRemoved = _repo.RemoveDoorFromBadge(newBadgeID, newDoorID);
+            if (wasRemoved)
+            {
+                Console.WriteLine("Door was removed from badge");
+            }
+            else
+            {
+                Console.WriteLine("Door was not removed from badge.");
             }
         }
     }
