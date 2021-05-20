@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeOne.Console", "GoldBadgeConsoleAppChallenges\ChallengeOne.Console.csproj", "{F97C9F85-14AB-4A65-87B8-023671501D51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeOne_Console", "GoldBadgeConsoleAppChallenges\ChallengeOne_Console.csproj", "{F97C9F85-14AB-4A65-87B8-023671501D51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeOne.Repository", "ChallengeOne.Repository\ChallengeOne.Repository.csproj", "{E855DBF8-9BED-458D-909C-335E92E47CD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeOne_Repository", "ChallengeOne.Repository\ChallengeOne_Repository.csproj", "{E855DBF8-9BED-458D-909C-335E92E47CD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeOne.Test", "ConsoleOne.Test\ChallengeOne.Test.csproj", "{B820935D-9874-414D-A898-800BEF5A5BD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeOne_Test", "ConsoleOne.Test\ChallengeOne_Test.csproj", "{B820935D-9874-414D-A898-800BEF5A5BD3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeTwo_Console", "ChallengeTwo.Console\ChallengeTwo_Console.csproj", "{30ADC7BD-42CD-403C-A5C6-B091D758523A}"
 EndProject
