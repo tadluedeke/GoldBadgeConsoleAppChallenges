@@ -38,9 +38,20 @@ namespace ChallengeThree_Repository
             }
         }
 
-        public void AddDoorToBadge(int badgeID, DoorID newDoorID)
+        public bool AddDoorToBadge(int badgeID, DoorID newDoorID)
         {
+            int countBefore = _listOfBadges[badgeID].Count;
                 _listOfBadges[badgeID].Add(newDoorID);
+            int countAfter = _listOfBadges[badgeID].Count;
+
+            if (countAfter > countBefore)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool RemoveDoorFromBadge()

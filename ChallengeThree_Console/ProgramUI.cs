@@ -201,46 +201,46 @@ namespace ChallengeThree_Console
                 newDoorID = DoorID.A2;
                 newBadge.Doors.Add(newDoorID);
             }
-            //else if (newDoor == "A3")
-            //{
-            //    DoorID newDoorID = DoorID.A3;
-            //    newBadge.Doors.Add(newDoorID);
-            //}
-            //else if (newDoor == "A4")
-            //{
-            //    DoorID newDoorID = DoorID.A4;
-            //    newBadge.Doors.Add(newDoorID);
-            //}
-            //else if (newDoor == "A5")
-            //{
-            //    DoorID newDoorID = DoorID.A5;
-            //    newBadge.Doors.Add(newDoorID);
-            //}
-            //else if (newDoor == "B1")
-            //{
-            //    DoorID newDoorID = DoorID.B1;
-            //    newBadge.Doors.Add(newDoorID);
-            //}
-            //else if (newDoor == "B2")
-            //{
-            //    DoorID newDoorID = DoorID.B2;
-            //    newBadge.Doors.Add(newDoorID);
-            //}
-            //else if (newDoor == "B3")
-            //{
-            //    DoorID newDoorID = DoorID.B3;
-            //    newBadge.Doors.Add(newDoorID);
-            //}
-            //else if (newDoor == "B4")
-            //{
-            //    DoorID newDoorID = DoorID.B4;
-            //    newBadge.Doors.Add(newDoorID);
-            //}
+            else if (newDoor == "A3")
+            {
+                newDoorID = DoorID.A3;
+                newBadge.Doors.Add(newDoorID);
+            }
+            else if (newDoor == "A4")
+            {
+                newDoorID = DoorID.A4;
+                newBadge.Doors.Add(newDoorID);
+            }
+            else if (newDoor == "A5")
+            {
+                newDoorID = DoorID.A5;
+                newBadge.Doors.Add(newDoorID);
+            }
+            else if (newDoor == "B1")
+            {
+                newDoorID = DoorID.B1;
+                newBadge.Doors.Add(newDoorID);
+            }
+            else if (newDoor == "B2")
+            {
+                newDoorID = DoorID.B2;
+                newBadge.Doors.Add(newDoorID);
+            }
+            else if (newDoor == "B3")
+            {
+                newDoorID = DoorID.B3;
+                newBadge.Doors.Add(newDoorID);
+            }
+            else if (newDoor == "B4")
+            {
+                newDoorID = DoorID.B4;
+                newBadge.Doors.Add(newDoorID);
+            }
 
-            var wasAdded = _repo.AddDoorToBadge(newBadgeID, newDoorID);
+            bool wasAdded = _repo.AddDoorToBadge(newBadgeID, newDoorID);
             if (wasAdded)
             {
-                //_repo.SeeBadgeByID(newBadge.BadgeID);
+                _repo.SeeBadgeByID(newBadgeID);
                 Console.WriteLine("Door was added to badge");
             }
             else
