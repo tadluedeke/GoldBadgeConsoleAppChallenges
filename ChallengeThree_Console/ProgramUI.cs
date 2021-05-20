@@ -33,7 +33,7 @@ namespace ChallengeThree_Console
                         AddBadge();
                         break;
                     case "2":
-                        //EditBadge();
+                        EditBadge();
                         break;
                     case "3":
                         ViewAllBadges();
@@ -57,6 +57,7 @@ namespace ChallengeThree_Console
             Badge newBadge = new Badge();
             newBadge.Doors = new List<DoorID>();
             Console.WriteLine("What is the badge number on the badge?");
+
             int newBadgeID = Convert.ToInt32(Console.ReadLine());
             newBadge.BadgeID = newBadgeID;
 
@@ -116,7 +117,7 @@ namespace ChallengeThree_Console
                 Console.WriteLine("Any other doors(y/n)?");
                 input = Console.ReadLine();
             }
-            if (_repo.CreateNewBadge(newBadge))
+            if (_repo.CreateNewBadge(newBadgeID, newBadge.Doors))
             {
                 Console.WriteLine("New badge successfully created");
             }
@@ -140,6 +141,111 @@ namespace ChallengeThree_Console
                 {
                     Console.WriteLine(doorID);
                 }
+            }
+        }
+
+        public void EditBadge()
+        {
+            Console.Clear();
+            ViewAllBadges();
+            Console.WriteLine("Enter the badge number that you wish to edit");
+
+            int badgeToEdit = Convert.ToInt32(Console.ReadLine());
+            _repo.SeeBadgeByID(badgeToEdit);
+            Console.Clear();
+            Console.WriteLine("What would you like to do?\n" +
+                "1. REMOVE a Door\n" +
+                "2. ADD a door");
+
+            string input = Console.ReadLine();
+            Console.Clear();
+
+            switch (input.ToLower())
+            {
+                case "1":
+                case "remove":
+                    //RemoveDoorFromBadge();
+                    break;
+                case "2":
+                case "add":
+                    AddDoorToBadge(badgeToEdit);
+                    break;
+                default:
+                    Console.WriteLine("Please choose a number or type a corresponding command");
+                    break;
+
+            }
+        }
+
+        public void AddDoorToBadge(int badge)
+        {
+            Badge newBadge = new Badge();
+            newBadge.Doors = new List<DoorID>();
+            int newBadgeID = badge;
+            newBadge.BadgeID = newBadgeID;
+            DoorID newDoorID = new DoorID();
+
+            Console.WriteLine("What door would you like to add to this badge?");
+
+            string newDoor = Console.ReadLine();
+
+            Console.WriteLine(newDoor);
+            if (newDoor == "A1")
+            {
+                newDoorID = DoorID.A1;
+                newBadge.Doors.Add(newDoorID);
+
+            }
+            else if (newDoor == "A2")
+            {
+                newDoorID = DoorID.A2;
+                newBadge.Doors.Add(newDoorID);
+            }
+            //else if (newDoor == "A3")
+            //{
+            //    DoorID newDoorID = DoorID.A3;
+            //    newBadge.Doors.Add(newDoorID);
+            //}
+            //else if (newDoor == "A4")
+            //{
+            //    DoorID newDoorID = DoorID.A4;
+            //    newBadge.Doors.Add(newDoorID);
+            //}
+            //else if (newDoor == "A5")
+            //{
+            //    DoorID newDoorID = DoorID.A5;
+            //    newBadge.Doors.Add(newDoorID);
+            //}
+            //else if (newDoor == "B1")
+            //{
+            //    DoorID newDoorID = DoorID.B1;
+            //    newBadge.Doors.Add(newDoorID);
+            //}
+            //else if (newDoor == "B2")
+            //{
+            //    DoorID newDoorID = DoorID.B2;
+            //    newBadge.Doors.Add(newDoorID);
+            //}
+            //else if (newDoor == "B3")
+            //{
+            //    DoorID newDoorID = DoorID.B3;
+            //    newBadge.Doors.Add(newDoorID);
+            //}
+            //else if (newDoor == "B4")
+            //{
+            //    DoorID newDoorID = DoorID.B4;
+            //    newBadge.Doors.Add(newDoorID);
+            //}
+
+            var wasAdded = _repo.AddDoorToBadge(newBadgeID, newDoorID);
+            if (wasAdded)
+            {
+                //_repo.SeeBadgeByID(newBadge.BadgeID);
+                Console.WriteLine("Door was added to badge");
+            }
+            else
+            {
+                Console.WriteLine("No badge corresponds with the provided badge number.");
             }
         }
     }
